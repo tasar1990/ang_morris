@@ -1,0 +1,21 @@
+<h1>HIII this is report</h1>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Plan Name</th>
+        <th>Values</th>
+        <th>From</th>
+        <th>To</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="x in info">
+        <td>{{ x.plan_name }}</td>
+        <td><chart-module values="{{x.values}}"></chart-module></td>
+        <td>{{ x.from_date | date :  "dd.MM.y" }}</td>
+        <td>{{ x.to_date | date :  "dd.MM.y" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

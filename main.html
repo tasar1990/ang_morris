@@ -1,0 +1,47 @@
+<div class="container">
+  <form ng-controller="mainControl" ng-submit="save_data(example)" name="myForm" novalidate>
+  
+    <div class="form-group">
+      <label for="inputname">Name</label>
+      <input type="text" class="form-control" ng-model="example.plan_name" name="plan_name" placeholder="Plane Name" ng-required="true">
+      <span style="color:red" ng-show="myForm.plan_name.$invalid || myForm.plan_name.$pristine">
+        <span ng-show="myForm.plan_name.$error.required">Username is required.</span>
+      </span>
+    </div>
+    
+    <div class="form-group">
+      <label for="inputvalue">Value</label>
+      <input type="number" ng-min="0" ng-max="100" ng-model="example.values" class="form-control" name="valuess" placeholder="Value" ng-required="true">
+      <span style="color:red" ng-show="myForm.valuess.$pristine || myForm.valuess.$invalid">
+        <span ng-show="myForm.valuess.$error.required">Value is required.</span>
+        <span ng-show="myForm.valuess.$error.number">Value is required.</span>
+        <span ng-show="myForm.valuess.$error.max">Value Should be 100.</span>
+        <span ng-show="myForm.valuess.$error.min">Value Should be > 0.</span>
+      </span>
+    </div>
+    
+    
+    <div class="form-group">
+    <label for="inputEmail">From</label>
+    <input type="date" class="form-control" name="from_date" ng-change='checkErr(example.from_date,example.to_date)' ng-model="example.from_date" placeholder="From Date">
+    <span style="color:red" ng-show="myForm.from_date.$pristine || myForm.from_date.$invalid">
+      <span ng-show="myForm.from_date.$error.required">From Date is required.</span>
+    </span>
+    </div>
+    
+    <div class="form-group">
+    <label for="inputEmail">To Date</label>
+    <input type="date" class="form-control" name="to_date" ng-change='checkErr(example.from_date,example.to_date)' ng-model="example.to_date" placeholder="To Date">
+    <span style="color:red" ng-show="myForm.to_date.$pristine || myForm.to_date.$invalid">
+      <span ng-show="myForm.to_date.$error.required">To Date is required.</span>
+    </span>
+    <span style="color:red" ng-show="errMessage != ''">{{errMessage}}</span>
+    </div>
+    
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary" ng-disabled="(!myForm.$dirty) && ((myForm.$invalid) || (errMessage != ''))">
+    </div>
+   
+  
+  </form>
+</div>
